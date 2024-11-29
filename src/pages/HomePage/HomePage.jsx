@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./HomePage.module.css";
 import WeatherCard from "../../components/WeatherCard/WeatherCard";
 import SearchForm from "../../components/SearchForm/SearchForm";
@@ -12,26 +12,48 @@ export default function HomePage() {
 		locationInput,
 		setLocationInput,
 		getWeather,
+		setWeather,
 	} = useWeather();
+	const [toggle, setToggle] = useState("search");
+	const [isMobile, setIsMobile] = useState(false);
 
 	useEffect(() => {
-		if (!locationInput) return
+		const checkIsMobile = () => {
+			setIsMobile(window.matchMedia("(max-width: 768px)").matches);
+		};
+		checkIsMobile();
+		const mediaQuery = window.matchMedia("(max-width: 768px)");
+		mediaQuery.addEventListener("change", checkIsMobile);
+		return () => mediaQuery.removeEventListener("change", checkIsMobile);
+	}, []);
+
+	useEffect(() => {
+		if (!locationInput) return;
 		getWeather(locationInput);
 	}, [locationInput]);
-	
+
 	return (
 		<div className={styles.homePage}>
-			<div className={styles.homePage__formBox}>
-				<SearchForm
-					setLocationInput={setLocationInput}
-					isLoading={isLoading}
-					weather={weather}
-					apiError={apiError}
-				/>
-			</div>
-			<div className={styles.homePage__weatherCard}>
-				<WeatherCard weather={weather} />
-			</div>
+			{(!isMobile || toggle === "search") && (
+				<div className={styles.homePage__formBox}>
+					<SearchForm
+						setLocationInput={setLocationInput}
+						isLoading={isLoading}
+						weather={weather}
+						apiError={apiError}
+						setToggle={setToggle}
+					/>
+				</div>
+			)}
+			{(!isMobile || toggle === "weather") && (
+				<div className={styles.homePage__weatherCard}>
+					<WeatherCard
+						weather={weather}
+						setWeather={setWeather}
+						setToggle={setToggle}
+					/>
+				</div>
+			)}
 		</div>
 	);
 }

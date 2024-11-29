@@ -21,5 +21,5 @@ export default function useWeather() {
     };
 
 
-    return { weather, locationInput, isLoading, apiError, setLocationInput, getWeather };
+    return { weather, locationInput, isLoading, apiError, setWeather, setLocationInput, getWeather };
 }

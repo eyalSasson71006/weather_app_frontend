@@ -4,13 +4,24 @@ import formatDate from "../../utils/dateFormat";
 import Spinner from "../spinner/Spinner";
 import useCityForm from "../../hooks/useCityForm";
 
-export default function SearchForm({ setLocationInput, isLoading, weather, apiError }) {
-	const {error,setError, handleChange, handleSubmit} = useCityForm(setLocationInput)
-	
+export default function SearchForm({
+	setLocationInput,
+	isLoading,
+	weather,
+	apiError,
+	setToggle,
+}) {
+	const { city, error, setError, handleChange, handleSubmit } =
+		useCityForm(setLocationInput);
+
 	useEffect(() => {
-		if(!apiError) return
-		setError(apiError)
+		if (!apiError) return;
+		setError(apiError);
 	}, [apiError]);
+
+	useEffect(() => {
+		if (!error && weather) setToggle("weather");
+	}, [weather]);
 	
 	return (
 		<article className={styles.searchForm}>
@@ -30,7 +41,10 @@ export default function SearchForm({ setLocationInput, isLoading, weather, apiEr
 						type="text"
 						placeholder="Enter city name"
 					/>
-					<button disabled={error || isLoading} onClick={handleSubmit}>
+					<button
+						disabled={!city || error || isLoading}
+						onClick={handleSubmit}
+					>
 						{isLoading ? <Spinner /> : "Check"}
 					</button>
 				</div>
