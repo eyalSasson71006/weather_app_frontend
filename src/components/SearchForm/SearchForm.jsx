@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styles from "./SearchForm.module.css";
 import validateCityInput from "../../validation/validateCityInput";
 import formatDate from "../../utils/dateFormat";
+import Spinner from "../spinner/Spinner";
 
 export default function SearchForm({ setLocationInput, isLoading, weather }) {
 	const [city, setCity] = useState("");
@@ -48,7 +49,7 @@ export default function SearchForm({ setLocationInput, isLoading, weather }) {
 						placeholder="Enter city name"
 					/>
 					<button onClick={handleSubmit}>
-						{isLoading ? "Loading..." : "Check"}
+						{isLoading ? <Spinner/> : "Check"}
 					</button>
 				</div>
 				{error && <p className={styles.searchForm__error}>{error}</p>}
