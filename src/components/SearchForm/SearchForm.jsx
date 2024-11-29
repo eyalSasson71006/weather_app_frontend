@@ -27,6 +27,7 @@ export default function SearchForm({
 		<article className={styles.searchForm}>
 			<img
 				src="./fintekLogo.svg"
+				alt="fintek logo"
 				className={styles.searchForm__fintekLogo}
 			/>
 			<h3 className={styles.searchForm__title}>

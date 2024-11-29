@@ -46,13 +46,11 @@ export default function HomePage() {
 				</div>
 			)}
 			{(!isMobile || toggle === "weather") && (
-				<div className={styles.homePage__weatherCard}>
 					<WeatherCard
 						weather={weather}
 						setWeather={setWeather}
 						setToggle={setToggle}
 					/>
-				</div>
 			)}
 		</div>
 	);

@@ -5,7 +5,7 @@ import formatDate from "../../utils/dateFormat";
 export default function WeatherCard({ weather, setToggle, setWeather }) {
 	if (!weather) return <></>;
 	return (
-		<>
+		<div className={styles.weatherCard__weatherCardBox}>
 			<button
 				onClick={() => {
 					setToggle("search");
@@ -65,6 +65,6 @@ export default function WeatherCard({ weather, setToggle, setWeather }) {
 				<p>latitude {weather.location.latitude.toFixed(2)}</p>
 				<p>longitude {weather.location.longitude.toFixed(2)}</p>
 			</div>
-		</>
+		</div>
 	);
 }
