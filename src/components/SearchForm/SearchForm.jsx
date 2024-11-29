@@ -1,34 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import styles from "./SearchForm.module.css";
-import validateCityInput from "../../validation/validateCityInput";
 import formatDate from "../../utils/dateFormat";
 import Spinner from "../spinner/Spinner";
+import useCityForm from "../../hooks/useCityForm";
 
 export default function SearchForm({ setLocationInput, isLoading, weather }) {
-	const [city, setCity] = useState("");
-	const [error, setError] = useState("");
-
-	function handleChange(e) {
-		let city = e.target.value;
-		let validationError = validateCityInput(city);
-		if (validationError) {
-			setError(validationError);
-		}else{
-			setError("");
-			setCity(city);
-		}
-	}
-
-	function handleSubmit(e) {
-		e.preventDefault();
-		let validationError = validateCityInput(city);
-		if (validationError) {
-			setError(validationError);
-			return;
-		}
-		setError("");
-		setLocationInput(city);
-	}
+	const {error, handleChange, handleSubmit} = useCityForm(setLocationInput)
 	
 	return (
 		<article className={styles.searchForm}>

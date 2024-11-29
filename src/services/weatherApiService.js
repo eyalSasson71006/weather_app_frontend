@@ -7,6 +7,11 @@ export const fetchWeather = async (location) => {
         const response = await axios.get(`${BASE_URL}/${location}`);
         return response.data;
     } catch (error) {
-        throw new Error(error);
+        if (error.response) {
+            const errorMessage = error.response.data;
+            throw new Error(errorMessage);
+        } else {
+            throw new Error("An unexpected error occurred. Please try again.");
+        }
     }
 };
