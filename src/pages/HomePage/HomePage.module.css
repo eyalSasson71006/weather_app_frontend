@@ -1,0 +1,20 @@
+.homePage{
+    width: 100vw;
+    height: 100vh;
+    padding: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #F1F1F1;
+}
+
+.homePage__weatherCard{
+    background-color: #DDE4E6;
+    border-radius: 4px;
+    padding: 2rem 4rem;
+    width: clamp(500px, 40vw, 650px);
+    height: clamp(500px, 85vh, 700px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

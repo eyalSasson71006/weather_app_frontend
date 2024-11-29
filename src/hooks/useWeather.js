@@ -4,7 +4,7 @@ import { fetchWeather } from "../services/weatherApiService";
 
 export default function useWeather() {
     const [locationInput, setLocationInput] = useState();
-    const [weather, setWeather] = useState({});
+    const [weather, setWeather] = useState();
     const [isLoading, setIsLoading] = useState(false);
 
 
