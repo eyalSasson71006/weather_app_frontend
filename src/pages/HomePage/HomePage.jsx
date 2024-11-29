@@ -24,6 +24,7 @@ export default function HomePage() {
 				<SearchForm
 					setLocationInput={setLocationInput}
 					isLoading={isLoading}
+					weather={weather}
 				/>
 			</div>
 			<div className={styles.homePage__weatherCard}>

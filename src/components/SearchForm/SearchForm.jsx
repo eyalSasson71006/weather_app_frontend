@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import styles from "./SearchForm.module.css";
 import validateCityInput from "../../validation/validateCityInput";
+import formatDate from "../../utils/dateFormat";
 
-export default function SearchForm({ setLocationInput, isLoading }) {
+export default function SearchForm({ setLocationInput, isLoading, weather }) {
 	const [city, setCity] = useState("");
 	const [error, setError] = useState("");
 
@@ -27,7 +28,7 @@ export default function SearchForm({ setLocationInput, isLoading }) {
 		setError("");
 		setLocationInput(city);
 	}
-
+	
 	return (
 		<article className={styles.searchForm}>
 			<img
@@ -46,17 +47,21 @@ export default function SearchForm({ setLocationInput, isLoading }) {
 						type="text"
 						placeholder="Enter city name"
 					/>
-					<button onClick={handleSubmit}>{isLoading ? "Loading..." : "Check"}</button>
+					<button onClick={handleSubmit}>
+						{isLoading ? "Loading..." : "Check"}
+					</button>
 				</div>
 				{error && <p className={styles.searchForm__error}>{error}</p>}
 			</form>
-			<footer className={styles.searchForm__footer}>
-				<div className={styles.searchForm__location}>
-					<p>latitude 32.07</p>
-					<p>longitude 34.76</p>
-				</div>
-				<p>accurate to 13/02/2022 at 16:24</p>
-			</footer>
+			{weather && (
+				<footer className={styles.searchForm__footer}>
+					<div className={styles.searchForm__location}>
+						<p>latitude {weather.location.latitude.toFixed(2)}</p>
+						<p>longitude {weather.location.longitude.toFixed(2)}</p>
+					</div>
+					<p>accurate to {formatDate(weather.location.localTime)}</p>
+				</footer>
+			)}
 		</article>
 	);
 }
