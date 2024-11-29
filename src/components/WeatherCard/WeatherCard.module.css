@@ -1,0 +1,73 @@
+.weatherCard{
+    background-color: #27737D;
+    border-radius: 30px;
+    text-align: center;
+    display: grid;
+    grid-template-rows: 1fr 1.6fr 0.7fr 0.7fr;
+    color: #fff;
+    padding: 2rem;
+    padding-bottom: 0;
+    width: clamp(300px, 30vw, 400px);
+    height: clamp(370px, 75vh, 500px);
+    align-items: center;
+}
+
+.weatherCard__header{
+    line-height: 1;
+}
+
+.weatherCard__city{
+    font-size: 1.3rem;
+}
+
+.weatherCard__country{
+    font-size: 1.2rem;
+    color: #A8C6CB;
+    font-weight: lighter;
+}
+
+.weatherCard__date{
+    font-size: 1.1rem;
+    color: #A8C6CB;
+    font-weight: lighter;
+    line-height: 2;
+}
+
+.weatherCard__temperature{
+    padding: 0.5rem;
+    line-height: 1;
+}
+
+.weatherCard__tempValue{
+    font-size: 6rem;
+    font-weight: 500;
+    margin-bottom: -0.8rem;
+}
+
+.weatherCard__tempCondition{
+    font-size: 1.5rem;
+    color: #E8F1F2;
+    font-weight: lighter;
+}
+
+.weatherCard__climate{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    text-align: center;
+}
+
+.weatherCard__climateItem > p:first-child{
+    font-weight: lighter;
+}
+
+.weatherCard__forecast{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.weatherCard__ForecastItem > p:first-child {
+    font-weight: lighter;
+    line-height: 1;
+}
+
