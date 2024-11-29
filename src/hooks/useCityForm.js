@@ -28,5 +28,5 @@ export default function useCityForm(onSubmit) {
     }
 
 
-    return { city, error, handleChange, handleSubmit };
+    return { city, error,setError, handleChange, handleSubmit };
 }

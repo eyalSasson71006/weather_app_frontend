@@ -7,6 +7,7 @@ import useWeather from "../../hooks/useWeather";
 export default function HomePage() {
 	const {
 		isLoading,
+		apiError,
 		weather,
 		locationInput,
 		setLocationInput,
@@ -25,12 +26,11 @@ export default function HomePage() {
 					setLocationInput={setLocationInput}
 					isLoading={isLoading}
 					weather={weather}
+					apiError={apiError}
 				/>
 			</div>
 			<div className={styles.homePage__weatherCard}>
-				<WeatherCard
-					weather={weather}
-				/>
+				<WeatherCard weather={weather} />
 			</div>
 		</div>
 	);

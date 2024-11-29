@@ -1,11 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./SearchForm.module.css";
 import formatDate from "../../utils/dateFormat";
 import Spinner from "../spinner/Spinner";
 import useCityForm from "../../hooks/useCityForm";
 
-export default function SearchForm({ setLocationInput, isLoading, weather }) {
-	const {error, handleChange, handleSubmit} = useCityForm(setLocationInput)
+export default function SearchForm({ setLocationInput, isLoading, weather, apiError }) {
+	const {error,setError, handleChange, handleSubmit} = useCityForm(setLocationInput)
+	
+	useEffect(() => {
+		if(!apiError) return
+		setError(apiError)
+	}, [apiError]);
 	
 	return (
 		<article className={styles.searchForm}>
