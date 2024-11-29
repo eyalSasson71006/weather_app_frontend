@@ -15,7 +15,7 @@ export default function useWeather() {
             let data = await fetchWeather(location);
             setWeather(data);
         } catch (err) {
-            setApiError(err?.message?.split(":")[1].trim());
+            setApiError(err?.message?.split(":")[1]?.trim() || "An unexpected error occurred");
         }
         setIsLoading(false);
     };
