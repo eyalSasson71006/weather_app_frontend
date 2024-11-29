@@ -55,6 +55,11 @@
     cursor: pointer;
 }
 
+.searchForm__inputBox button:disabled{
+    background-color: #046b3b79;
+    cursor: auto;
+}
+
 .searchForm__error{
     color: darkred;
 }

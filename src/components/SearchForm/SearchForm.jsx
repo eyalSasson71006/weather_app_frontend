@@ -48,8 +48,8 @@ export default function SearchForm({ setLocationInput, isLoading, weather }) {
 						type="text"
 						placeholder="Enter city name"
 					/>
-					<button onClick={handleSubmit}>
-						{isLoading ? <Spinner/> : "Check"}
+					<button disabled={error || isLoading} onClick={handleSubmit}>
+						{isLoading ? <Spinner /> : "Check"}
 					</button>
 				</div>
 				{error && <p className={styles.searchForm__error}>{error}</p>}
