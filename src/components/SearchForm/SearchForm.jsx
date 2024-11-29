@@ -4,15 +4,9 @@ import formatDate from "../../utils/dateFormat";
 import Spinner from "../spinner/Spinner";
 import useCityForm from "../../hooks/useCityForm";
 
-export default function SearchForm({
-	setLocationInput,
-	isLoading,
-	weather,
-	apiError,
-	setToggle,
-}) {
+export default function SearchForm({ isLoading, weather, apiError, setToggle, getWeather }) {
 	const { city, error, setError, handleChange, handleSubmit } =
-		useCityForm(setLocationInput);
+		useCityForm(getWeather);
 
 	useEffect(() => {
 		if (!apiError) return;
@@ -22,7 +16,7 @@ export default function SearchForm({
 	useEffect(() => {
 		if (!error && weather) setToggle("weather");
 	}, [weather]);
-	
+
 	return (
 		<article className={styles.searchForm}>
 			<img

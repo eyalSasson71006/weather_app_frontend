@@ -2,7 +2,6 @@ import { useState } from "react";
 import { fetchWeather } from "../services/weatherApiService";
 
 export default function useWeather() {
-    const [locationInput, setLocationInput] = useState();
     const [weather, setWeather] = useState();
     const [isLoading, setIsLoading] = useState(false);
     const [apiError, setApiError] = useState();
@@ -21,5 +20,5 @@ export default function useWeather() {
     };
 
 
-    return { weather, locationInput, isLoading, apiError, setWeather, setLocationInput, getWeather };
+    return { weather, isLoading, apiError, setWeather, getWeather };
 }

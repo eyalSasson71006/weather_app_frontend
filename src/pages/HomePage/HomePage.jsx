@@ -9,8 +9,6 @@ export default function HomePage() {
 		isLoading,
 		apiError,
 		weather,
-		locationInput,
-		setLocationInput,
 		getWeather,
 		setWeather,
 	} = useWeather();
@@ -27,30 +25,25 @@ export default function HomePage() {
 		return () => mediaQuery.removeEventListener("change", checkIsMobile);
 	}, []);
 
-	useEffect(() => {
-		if (!locationInput) return;
-		getWeather(locationInput);
-	}, [locationInput]);
-
 	return (
 		<div className={styles.homePage}>
 			{(!isMobile || toggle === "search") && (
 				<div className={styles.homePage__formBox}>
 					<SearchForm
-						setLocationInput={setLocationInput}
 						isLoading={isLoading}
 						weather={weather}
 						apiError={apiError}
 						setToggle={setToggle}
+						getWeather={getWeather}
 					/>
 				</div>
 			)}
 			{(!isMobile || toggle === "weather") && (
-					<WeatherCard
-						weather={weather}
-						setWeather={setWeather}
-						setToggle={setToggle}
-					/>
+				<WeatherCard
+					weather={weather}
+					setWeather={setWeather}
+					setToggle={setToggle}
+				/>
 			)}
 		</div>
 	);
