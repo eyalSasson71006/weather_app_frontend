@@ -20,3 +20,7 @@
 .SearchAutoComplete__suggestions li:hover {
     background: #f0f0f0;
 }
+
+.SearchAutoComplete__suggestions_selected {
+    background: #f0f0f0;
+}

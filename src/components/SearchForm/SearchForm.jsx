@@ -4,6 +4,7 @@ import formatDate from "../../utils/dateFormat";
 import Spinner from "../spinner/Spinner";
 import useCityForm from "../../hooks/useCityForm";
 import SearchAutoComplete from "../SearchAutoComplete/SearchAutoComplete";
+import useAutoComplete from "../../hooks/useAutoComplete";
 
 export default function SearchForm({
 	isLoading,
@@ -21,6 +22,13 @@ export default function SearchForm({
 		handleChange,
 		handleSubmit,
 	} = useCityForm(getWeather);
+	const { currentIndex, listenToArrowKeys, listRef } = useAutoComplete(
+		autoComplete,
+		(input) => {
+			getWeather(input);
+			setCity("");
+		}
+	);
 
 	useEffect(() => {
 		if (!apiError) return;
@@ -48,6 +56,7 @@ export default function SearchForm({
 				<div className={styles.searchForm__inputBox}>
 					<input
 						onChange={handleChange}
+						onKeyDown={listenToArrowKeys}
 						value={city}
 						id="cityInput"
 						type="text"
@@ -68,6 +77,8 @@ export default function SearchForm({
 					city={city}
 					setCity={setCity}
 					getWeather={getWeather}
+					currentIndex={currentIndex}
+					listRef={listRef}
 				/>
 				{error && <p className={styles.searchForm__error}>{error}</p>}
 			</form>
