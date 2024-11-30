@@ -42,7 +42,9 @@ export default function SearchForm({
 				Use our weather app to see the weather around the world
 			</h3>
 			<form className={styles.searchForm__inputForm}>
-				<label htmlFor="cityInput">City name</label>
+				<label id="cityLabel" htmlFor="cityInput">
+					City name
+				</label>
 				<div className={styles.searchForm__inputBox}>
 					<input
 						onChange={handleChange}
@@ -50,6 +52,8 @@ export default function SearchForm({
 						id="cityInput"
 						type="text"
 						placeholder="Enter city name"
+						autoComplete="off"
+						aria-labelledby="cityLabel"
 					/>
 					<button
 						disabled={!city || error || isLoading}
@@ -61,6 +65,7 @@ export default function SearchForm({
 				<SearchAutoComplete
 					error={error}
 					autoComplete={autoComplete}
+					city={city}
 					setCity={setCity}
 				/>
 				{error && <p className={styles.searchForm__error}>{error}</p>}
