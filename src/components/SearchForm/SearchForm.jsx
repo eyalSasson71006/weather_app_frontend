@@ -67,6 +67,7 @@ export default function SearchForm({
 					autoComplete={autoComplete}
 					city={city}
 					setCity={setCity}
+					getWeather={getWeather}
 				/>
 				{error && <p className={styles.searchForm__error}>{error}</p>}
 			</form>
