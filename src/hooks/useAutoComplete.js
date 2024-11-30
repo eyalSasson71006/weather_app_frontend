@@ -12,7 +12,7 @@ export default function useAutoComplete(autoComplete, onEnter) {
             );
         } else if (e.key === "ArrowUp") {
             setCurrentIndex((prevIndex) => Math.max(prevIndex - 1, 0));
-        } else if (e.key === "Enter" && currentIndex !== -1) {
+        } else if (e.key === "Enter" && currentIndex !== -1 && autoComplete[currentIndex]) {
             e.preventDefault();
             onEnter(
                 `${autoComplete[currentIndex].name}, ${autoComplete[currentIndex].country}`

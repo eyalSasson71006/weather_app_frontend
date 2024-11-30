@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import validateCityInput from "../validation/validateCityInput";
 import { fetchAutoComplete } from "../services/weatherApiService";
 import debounce from "../utils/debounce";
@@ -8,6 +8,8 @@ export default function useCityForm(onSubmit) {
     const [error, setError] = useState("");
     const [autoComplete, setAutoComplete] = useState([]);
 
+    const debouncedGetAutoComplete = useCallback(debounce(getAutoComplete, 500), []);
+
     function handleChange(e) {
         let city = e.target.value;
         let validationError = validateCityInput(city);
@@ -15,7 +17,7 @@ export default function useCityForm(onSubmit) {
         if (validationError) {
             setError(validationError);
         } else {
-            debounce(getAutoComplete, 500)(city);
+            debouncedGetAutoComplete(city);
             setError("");
         }
     }
