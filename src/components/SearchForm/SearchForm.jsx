@@ -22,6 +22,7 @@ export default function SearchForm({
 		handleChange,
 		handleSubmit,
 	} = useCityForm(getWeather);
+
 	const { currentIndex, listenToArrowKeys, listRef } = useAutoComplete(
 		autoComplete,
 		(input) => {

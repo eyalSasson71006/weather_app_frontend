@@ -5,13 +5,8 @@ import SearchForm from "../../components/SearchForm/SearchForm";
 import useWeather from "../../hooks/useWeather";
 
 export default function HomePage() {
-	const {
-		isLoading,
-		apiError,
-		weather,
-		getWeather,
-		setWeather,
-	} = useWeather();
+	const { isLoading, apiError, weather, getWeather, setWeather } =
+		useWeather();
 	const [toggle, setToggle] = useState("search");
 	const [isMobile, setIsMobile] = useState(false);
 

@@ -8,7 +8,7 @@ export default function useCityForm(onSubmit) {
     const [error, setError] = useState("");
     const [autoComplete, setAutoComplete] = useState([]);
 
-    const debouncedGetAutoComplete = useCallback(debounce(getAutoComplete, 500), []);
+    const debouncedGetAutoComplete = useCallback(debounce(getAutoComplete, 300), []);
 
     function handleChange(e) {
         let city = e.target.value;
@@ -30,8 +30,8 @@ export default function useCityForm(onSubmit) {
             return;
         }
         setError("");
-        setCity("")
-        setAutoComplete([])
+        setCity("");
+        setAutoComplete([]);
         onSubmit(city);
     }
 
