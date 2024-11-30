@@ -1,8 +1,36 @@
-# React + Vite
+# Weather App Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is the frontend for the Weather App, built with React. It provides an interface for searching cities, viewing weather details, and interacting with autocomplete suggestions.
 
-Currently, two official plugins are available:
+## **Setup Instructions**
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/eyalSasson71006/weather_app_frontend.git
+   cd weather_app_frontend
+
+2. Install dependencies:
+   ```bash
+   npm install
+
+3. Add the given .env file to the root directory.
+
+4. Start the development server:
+   ```bash
+    npm run dev
+
+5. Open the app in your browser:
+   ```bash
+    http://localhost:5173
+
+## Dependencies:
+- React
+- Vite
+
+## Scripts:
+- npm run dev: Start the development server.
+- npm run build: Build the project for production.
+- npm run preview: Preview the production build.
+
+## Notes
+- Ensure the backend is running and the VITE_API_URL in .env points to the backend server.
