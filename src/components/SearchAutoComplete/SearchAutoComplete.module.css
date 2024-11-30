@@ -1,0 +1,22 @@
+.SearchAutoComplete__suggestions {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border: 1px solid #ccc;
+    max-height: 150px;
+    width: clamp(300px, 30vw, 420px);
+    overflow-y: auto;
+    position: absolute;
+    background: white;
+    z-index: 1000;
+    border-radius: 10px;
+}
+
+.SearchAutoComplete__suggestions li {
+    padding: 7px;
+    cursor: pointer;
+}
+
+.SearchAutoComplete__suggestions li:hover {
+    background: #f0f0f0;
+}

@@ -15,3 +15,17 @@ export const fetchWeather = async (location) => {
         }
     }
 };
+
+export const fetchAutoComplete = async (location) => {    
+    try {
+        const response = await axios.get(`${BASE_URL}/search/${location}`);
+        return response.data;
+    } catch (error) {
+        if (error.response) {
+            const errorMessage = error.response.data;
+            throw new Error(errorMessage);
+        } else {
+            throw new Error("An unexpected error occurred. Please try again.");
+        }
+    }
+};
